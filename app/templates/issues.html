@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between">
+  <h2>Issues</h2><a class="btn btn-primary" href="/issues/new">New Issue</a>
+</div>
+<form class="my-3" method="get" action="/issues">
+  <input class="form-control" name="q" placeholder="Search issues" value="{{ q|safe }}">
+  <!-- VULNERABILITY: Reflected XSS via q|safe -->
+</form>
+<table class="table table-striped">
+  <tr><th>ID</th><th>Title</th><th>Status</th><th>Owner</th></tr>
+  {% for i in issues %}
+  <tr><td>{{i.id}}</td><td><a href="/issues/{{i.id}}">{{i.title}}</a></td><td>{{i.status}}</td><td>{{i.username}}</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

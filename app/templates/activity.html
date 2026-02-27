@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Activity Logs</h2>
+<table class="table"><tr><th>ID</th><th>Action</th><th>User</th><th>Details</th></tr>
+{% for l in logs %}<tr><td>{{l.id}}</td><td>{{l.action}}</td><td>{{l.user_id}}</td><td>{{l.details}}</td></tr>{% endfor %}
+</table>
+<p class="text-muted">VULNERABILITY: Failed logins and admin actions are not comprehensively audited.</p>
+{% endblock %}

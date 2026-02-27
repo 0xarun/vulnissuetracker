@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if issue %}
+<h2>#{{issue.id}} - {{issue.title}}</h2>
+<p>{{issue.description|safe}}</p>
+{% if issue.attachment %}<p><a href="/download?name={{issue.attachment}}">Download attachment</a></p>{% endif %}
+<form method="post" action="/issues/{{issue.id}}/edit">
+  <input class="form-control mb-2" name="title" value="{{issue.title}}">
+  <textarea class="form-control mb-2" name="description">{{issue.description}}</textarea>
+  <input class="form-control mb-2" name="status" value="{{issue.status}}">
+  <button class="btn btn-warning">Edit</button>
+</form>
+<form method="post" action="/issues/{{issue.id}}/delete" class="mt-2"><button class="btn btn-danger">Delete</button></form>
+<hr>
+<h4>Comments</h4>
+{% for c in comments %}
+<div class="card p-2 mb-2"><b>{{c.username}}</b>: {{c.content|safe}}</div>
+{% endfor %}
+<form method="post" action="/issues/{{issue.id}}/comment">
+  <textarea class="form-control mb-2" name="content"></textarea>
+  <button class="btn btn-secondary">Add comment</button>
+</form>
+{% endif %}
+{% endblock %}

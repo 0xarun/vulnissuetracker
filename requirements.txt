@@ -1,0 +1,6 @@
+fastapi==0.65.2
+uvicorn==0.18.3
+jinja2==3.0.3
+python-multipart==0.0.5
+requests==2.26.0
+itsdangerous==2.0.1

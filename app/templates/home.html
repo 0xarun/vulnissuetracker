@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="p-4 bg-light rounded">
+  <h1>Welcome to VulnIssueTracker</h1>
+  <p>A deliberately vulnerable issue tracker for detection labs.</p>
+  <a href="/login" class="btn btn-primary">Login</a>
+  <a href="/register" class="btn btn-secondary">Register</a>
+</div>
+<div id="dom-xss" class="mt-3 alert alert-warning"></div>
+<script>
+  // VULNERABILITY: DOM-based XSS
+  const hash = location.hash.substring(1);
+  if (hash) { document.getElementById('dom-xss').innerHTML = hash; }
+</script>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Create Issue</h2>
+<form method="post" action="/issues/new">
+  <input class="form-control mb-2" name="title" placeholder="Title">
+  <textarea class="form-control mb-2" name="description" placeholder="Description"></textarea>
+  <select class="form-select mb-2" name="status"><option>open</option><option>closed</option></select>
+  <button class="btn btn-primary">Create</button>
+</form>
+{% endblock %}
