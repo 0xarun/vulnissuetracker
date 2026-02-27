@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Admin Dashboard</h2>
+<p>Visible to anyone due to broken access control.</p>
+<h4>Users</h4>
+<ul>{% for u in users %}<li>{{u.id}} {{u.username}} ({{u.role}})</li>{% endfor %}</ul>
+<h4>Issues</h4>
+<ul>{% for i in issues %}<li>#{{i.id}} {{i.title}}</li>{% endfor %}</ul>
+{% endblock %}
